@@ -1,33 +1,37 @@
-print("""
----------------Registro de ventas--------------
-        1. Nuevo producto 
-        2. Salir
+while True:    
+    print("------------------------------------------")
+    print("-------- Registro de ventas --------------")
+    print("------------------------------------------")
 
-""")
-opcion = input("Que opcion deseas realizar? ")
+    while True:
+        nombres = input("Nombre del cliente: ").strip().capitalize()
+        if nombres == "":
+            print("El nombre no puede estar vacío.")
+        elif nombres.isnumeric():
+            print("El nombre no puede ser solo números.")
+        else:
+            break
 
-while True:
-        if opcion == "1":
-                        nombres = input("Nombre del producto: ").strip().capitalize()
-                        if nombres == "" or nombres.isnumeric():
-                                print("El nombre no puede estar vacío o no puede ser solo números..")
+    while True:
+        try:
+            precio = float(input("Precio del producto: "))
+            if precio < 0:
+                print("El precio no puede ser negativo.")
+            else:
+                break
+        except ValueError:
+            print("Error: Debes ingresar un número válido para el precio.")
 
-                        else:
-                                try:
-                                        precio =float(input("Digite el precio del producto: "))
-                                        
-                                        if precio < 0 :
-                                                print("El valor no puede ser menor a 0 o por de bajo de 0 ")
-                                                continue
-
-                                        cantidad = int(input("Ingrese la cantidad del producto: "))
-
-                                        if cantidad > 0:
-                                                print("La cantidad no puede ser menor a 0 o 0")
-                                except ValueError:
-                                        print("ERROR: No se acepta ese tipo de valor")
-
-
-
+    # Validar cantidad (solo enteros)
+    while True:
+        try:
+            cantidad_compra = int(input("Ingresa la cantidad comprada: "))
+            if cantidad_compra <= 0:
+                print("La cantidad debe ser mayor que 0.")
+            else:
+                break
+        except ValueError:
+            print("Error: Debes ingresar un número entero válido.")
+    
 
 
