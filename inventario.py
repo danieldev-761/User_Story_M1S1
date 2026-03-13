@@ -1,13 +1,15 @@
-while True:    
+
+opcion= 1
+while opcion== 1:    
     print("------------------------------------------")
     print("-------- Registro de ventas --------------")
     print("------------------------------------------")
 
     while True:
-        nombres = input("Nombre del cliente: ").strip().capitalize()
-        if nombres == "":
+        nombre = input("Nombre del producto: ").strip().capitalize()
+        if nombre == "":
             print("El nombre no puede estar vacío.")
-        elif nombres.isnumeric():
+        elif nombre.isnumeric():
             print("El nombre no puede ser solo números.")
         else:
             break
@@ -25,8 +27,8 @@ while True:
     # Validar cantidad (solo enteros)
     while True:
         try:
-            cantidad_compra = int(input("Ingresa la cantidad comprada: "))
-            if cantidad_compra <= 0:
+            cantidad = int(input("Ingresa la cantidad comprada: "))
+            if cantidad <= 0:
                 print("La cantidad debe ser mayor que 0.")
             else:
                 break
@@ -34,22 +36,18 @@ while True:
             print("Error: Debes ingresar un número entero válido.")
     
 
+    #validacion 
+    if precio >= 0 and cantidad >= 0:
+        costo_total= precio * cantidad
+        print("el costo total es: ", costo_total)
+    else:
+        print("error precio o cantidad invalida")
 
+    # resultado
+    print("----Resultado Inventario----")
+    print(f"Producto: {nombre} | Precio: {precio} | Cantidad: {cantidad} |Costo total: {costo_total}")
+    
 
-# costo total
-
-precio= float(input("ingrese el precio del producto: "))
-cantidad= int(input("ingrese la cantidad del producto: "))
-
-#validacion 
-if precio >= 0 and cantidad >= 0:
-    costo_total= precio * cantidad
-    print("el costo total es: ", costo_total)
-else:
-    print("error precio o cantidad invalida")
-
-# resultado
-print("----resultado inventario----")
-print("precio: ", precio)
-print("cantidad: ", cantidad)
-print("costo total: ", costo_total)
+    # Preguntar si desea registrar otra venta
+    opcion = input("¿Deseas registrar otra venta? (1 para sí, cualquier otra tecla para no): ")
+    opcion = int(opcion) if opcion.isdigit() else 0
