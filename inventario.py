@@ -1,10 +1,11 @@
 
 opcion= 1
-while opcion== 1:    
+while opcion== 1: # El ciclo se repetirá mientras el usuario ingrese 1 para registrar otra venta
     print("------------------------------------------")
     print("-------- Registro de ventas --------------")
     print("------------------------------------------")
 
+    # Primer validacion del nombre del producto
     while True:
         nombre = input("Nombre del producto: ").strip().capitalize()
         if nombre == "":
@@ -13,7 +14,7 @@ while opcion== 1:
             print("El nombre no puede ser solo números.")
         else:
             break
-
+    # Segundo bucle para validar precio (solo números, no negativos)
     while True:
         try:
             precio = float(input("Precio del producto: "))
@@ -24,7 +25,7 @@ while opcion== 1:
         except ValueError:
             print("Error: Debes ingresar un número válido para el precio.")
 
-    # Validar cantidad (solo enteros)
+    # Tercer bucle para validar cantidad (solo enteros)
     while True:
         try:
             cantidad = int(input("Ingresa la cantidad comprada: "))
@@ -36,18 +37,18 @@ while opcion== 1:
             print("Error: Debes ingresar un número entero válido.")
     
 
-    #validacion 
+    # Validacion final antes de calcular el costo total
     if precio >= 0 and cantidad >= 0:
         costo_total= precio * cantidad
         print("el costo total es: ", costo_total)
     else:
         print("error precio o cantidad invalida")
 
-    # resultado
+    # Impresión de resultados
     print("----Resultado Inventario----")
     print(f"Producto: {nombre} | Precio: {precio} | Cantidad: {cantidad} |Costo total: {costo_total}")
     
 
     # Preguntar si desea registrar otra venta
     opcion = input("¿Deseas registrar otra venta? (1 para sí, cualquier otra tecla para no): ")
-    opcion = int(opcion) if opcion.isdigit() else 0
+    opcion = int(opcion) if opcion.isdigit() else 0 # Convertir a entero si es un número, de lo contrario asignar 0 para salir del ciclo
